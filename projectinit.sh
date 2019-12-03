@@ -37,12 +37,24 @@ getProjectName(){
 
 makeProjectDir(){
     cd ~
-    mkdir $projectName
+    mkdir $projectName &> errors.log
     cd $projectName
 }
 
 makeFrontEndDirectory(){
     touch "index.html"
+    echo "<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href='./styles/main.css' rel='stylesheet'>
+        <style></style>
+        <script src='./scripts/index.js'></script>
+    </head>
+    <body>
+    </body>
+</html>" >> index.html
     touch ".gitignore"
     mkdir "assets"
     mkdir "styles"
@@ -52,6 +64,18 @@ makeFrontEndDirectory(){
 
 makeFrontEndAltDirectory(){
     touch "index.html"
+    echo "<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href='./styles/main.css' rel='stylesheet'>
+        <style></style>
+        <script src='./scripts/index.js'></script>
+    </head>
+    <body>
+    </body>
+</html>" >> index.html
     touch ".gitignore"
     mkdir "assets"
     mkdir "styles"
@@ -65,6 +89,20 @@ makeFrontEndAltDirectory(){
 
 makeWebAppDirectory(){
     touch "index.php"
+        echo "<?php 
+        ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href='./styles/main.css' rel='stylesheet'>
+        <style></style>
+        <script src='./scripts/index.js'></script>
+    </head>
+    <body>
+    </body>
+</html>" >> index.php
     touch ".gitignore"
     echo "/vendor" >> .gitignore
     touch "composer.json"
@@ -84,18 +122,21 @@ frontEnd(){
     getProjectName
     makeProjectDir
     makeFrontEndDirectory
+    git init
 }
 
 frontEndAlt(){
     getProjectName
     makeProjectDir
     makeFrontEndAltDirectory
+    git init
 }
 
 webApp(){
     getProjectName
     makeProjectDir
     makeWebAppDirectory
+    git init
 }
 
 printf "\n"
