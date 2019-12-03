@@ -107,7 +107,7 @@ makeWebAppDirectory(){
     echo "/vendor" >> .gitignore
     touch "composer.json"
     echo "{}" >> composer.json
-    composer install
+    composer install &> errors.log
     mkdir "assets"
     mkdir "styles"
     mkdir "scripts"
